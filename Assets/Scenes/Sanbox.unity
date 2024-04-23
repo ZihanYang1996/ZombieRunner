@@ -943,6 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 347699350}
+  radius: 10
 --- !u!1001 &1819118822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1149,6 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 347699350}
+  radius: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
