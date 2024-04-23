@@ -14,6 +14,7 @@ public class ChasePlayer : MonoBehaviour
     [SerializeField] float chaseTimeAfterLosesTarget = 5f;
     float squareRadius;
     float squareDistance;
+    float squareStoppingDistance;
 
     bool isProvoked = false;
     Coroutine keepChasingCoroutine;
@@ -25,6 +26,7 @@ public class ChasePlayer : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         squareRadius = Radius * Radius;
+        squareStoppingDistance = agent.stoppingDistance * agent.stoppingDistance;
     }
 
     // Update is called once per frame
@@ -39,6 +41,7 @@ public class ChasePlayer : MonoBehaviour
             CalculateDistance();
             if (squareDistance <= squareRadius)
             {
+                Debug.Log("Provoked");
                 isProvoked = true;
             }
         }
@@ -59,13 +62,27 @@ public class ChasePlayer : MonoBehaviour
     void EngaeTarget()
     {
         CalculateDistance();
+        if (squareDistance >= squareStoppingDistance)
+        {
+            ChaseTarget();
+        }
+        else
+        {
+            Debug.Log("Attacking the target");
+            // Attack the target
+            // AttackTarget();
+        }
+    }
+
+    void ChaseTarget()
+    {
         if (squareDistance <= squareRadius)
         {
             // Check if the coroutine is null, if not stop the coroutine
             // Note that the coroutine stopped either by itself or by the StopCoroutine method won't be null
             if (keepChasingCoroutine != null)
             {
-                Debug.Log("Stopping the coroutine");
+                Debug.Log("Restart chasing");
                 StopCoroutine(keepChasingCoroutine);
                 keepChasingCoroutine = null;  // Reset the coroutine to null
             }
@@ -82,7 +99,6 @@ public class ChasePlayer : MonoBehaviour
             }
         }
     }
-
     // Keep moving towards the last known position of the player
     IEnumerator KeepChasing(Vector3 lastKnownPosition, float chaseTimeAfterLosesTarget)
     {
@@ -103,10 +119,12 @@ public class ChasePlayer : MonoBehaviour
             timeElapsed += Time.deltaTime;
             // Can be used to add some behavior while chasing
             yield return new WaitForEndOfFrame();
-            
+
         }
         Debug.Log("Stopped chasing");
+        Debug.Log("No longer provoked");
         agent.isStopped = true;
+        isProvoked = false;
     }
 
     void CalculateDistance()
