@@ -812,6 +812,7 @@ GameObject:
   - component: {fileID: 1377576824}
   - component: {fileID: 1377576823}
   - component: {fileID: 1377576827}
+  - component: {fileID: 1377576829}
   - component: {fileID: 1377576828}
   m_Layer: 8
   m_Name: Enemy
@@ -943,7 +944,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 347699350}
-  radius: 10
+  Radius: 10
+--- !u!114 &1377576829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377576822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d80446cceb32094d98fc97ed6581fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chasePlayer: {fileID: 0}
 --- !u!1001 &1819118822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1019,6 +1033,7 @@ GameObject:
   - component: {fileID: 2054883260}
   - component: {fileID: 2054883259}
   - component: {fileID: 2054883263}
+  - component: {fileID: 2054883265}
   - component: {fileID: 2054883264}
   m_Layer: 8
   m_Name: Enemy 2
@@ -1150,7 +1165,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 347699350}
-  radius: 10
+  Radius: 10
+--- !u!114 &2054883265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054883258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d80446cceb32094d98fc97ed6581fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chasePlayer: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

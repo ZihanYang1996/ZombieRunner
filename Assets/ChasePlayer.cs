@@ -10,8 +10,8 @@ public class ChasePlayer : MonoBehaviour
     [SerializeField] Transform player;
 
     [Tooltip("The square of the distance within which the enemy will chase the player")]
-    [SerializeField] float radius = 10f;
-    float squareRadius;    
+    public float Radius = 10f;
+    float squareRadius;
     float squareDistance;
 
     NavMeshAgent agent;
@@ -19,7 +19,7 @@ public class ChasePlayer : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        squareRadius = radius * radius;
+        squareRadius = Radius * Radius;
     }
 
     // Update is called once per frame
@@ -42,4 +42,15 @@ public class ChasePlayer : MonoBehaviour
     {
         squareDistance = (player.position - transform.position).sqrMagnitude;
     }
+
+    void OnDrawGizmosSelected()
+    {
+        if (!Application.isPlaying)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, Radius);
+        }
+    }
+
+
 }
