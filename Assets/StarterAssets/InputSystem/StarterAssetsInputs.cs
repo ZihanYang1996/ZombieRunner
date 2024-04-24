@@ -75,6 +75,7 @@ namespace StarterAssets
 		public void ShootInput(bool newShootState)
 		{
 			shoot = newShootState;
+			Debug.Log("Shoot: " + shoot);
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)
