@@ -799,6 +799,24 @@ MonoBehaviour:
   player: {fileID: 8997996947815459863}
   Radius: 10
   chaseTimeAfterLosesTarget: 5
+--- !u!1 &1586824492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8273883350795276698, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+  m_PrefabInstance: {fileID: 8603075004747669688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1586824495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586824492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ec7556f3ce63e408e0f988cef09408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 9005220659679271695}
 --- !u!1 &1682183543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,7 +1671,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8273883350795276698, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1586824495}
   m_SourcePrefab: {fileID: 100100000, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
 --- !u!143 &8616685849190774439 stripped
 CharacterController:
@@ -1675,6 +1696,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7680720894630643775, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
   m_PrefabInstance: {fileID: 8603075004747669688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &9005220659679271695 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9020711585542024646, guid: f769715908779cf449f66c3badc9756d, type: 3}
+  m_PrefabInstance: {fileID: 5170590757102972546}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
