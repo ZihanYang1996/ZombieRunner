@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -9,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera _camera;
 
     [SerializeField] int _damage = 10;
+    [SerializeField] ParticleSystem _muzzleFlash;
 
     void Awake()
     {
@@ -24,6 +26,7 @@ public class Weapon : MonoBehaviour
     {
         if (_input.shoot)
         {
+            _muzzleFlash.Play();
             RaycastHit hit;
             if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit))
             {
