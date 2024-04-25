@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HitEffect NoDecal
       objectReference: {fileID: 0}
+    - target: {fileID: 5005425570110525821, guid: f1852c6067501d84ba597f76d8138a88, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626298542296775606, guid: f1852c6067501d84ba597f76d8138a88, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7031004523781215833, guid: f1852c6067501d84ba597f76d8138a88, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,6 +58,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7031004523781215833, guid: f1852c6067501d84ba597f76d8138a88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486215716318764316, guid: f1852c6067501d84ba597f76d8138a88, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486215716318764316, guid: f1852c6067501d84ba597f76d8138a88, type: 3}
+      propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7486215716318764316, guid: f1852c6067501d84ba597f76d8138a88, type: 3}

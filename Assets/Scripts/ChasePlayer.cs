@@ -21,12 +21,14 @@ public class ChasePlayer : MonoBehaviour
 
 
     NavMeshAgent agent;
+    Animator animator;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         squareRadius = Radius * Radius;
         squareStoppingDistance = agent.stoppingDistance * agent.stoppingDistance;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -64,10 +66,13 @@ public class ChasePlayer : MonoBehaviour
         CalculateDistance();
         if (squareDistance >= squareStoppingDistance)
         {
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isMoving", true);
             ChaseTarget();
         }
         else
         {
+            animator.SetBool("isAttacking", true);
             Debug.Log("Attacking the target");
             // Attack the target
             // AttackTarget();
@@ -125,6 +130,7 @@ public class ChasePlayer : MonoBehaviour
         Debug.Log("No longer provoked");
         agent.isStopped = true;
         isProvoked = false;
+        animator.SetBool("isMoving", false);
     }
 
     void CalculateDistance()
