@@ -63,8 +63,8 @@ public class HitVFXPool : MonoBehaviour
 
     GameObject CreatePooledItem()
     {
-        GameObject newHitVFX = Instantiate(hitVFXPrefab);
-        newHitVFX.transform.SetParent(transform);
+        GameObject newHitVFX = Instantiate(hitVFXPrefab, transform);
+        // newHitVFX.transform.SetParent(transform);
         newHitVFX.name = "Hit VFX Instance";
         return newHitVFX;
     }

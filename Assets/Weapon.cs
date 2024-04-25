@@ -37,9 +37,9 @@ public class Weapon : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, rayCastDistance))
             {
-                Debug.Log(hit.point);
+                Debug.Log(hit.transform.name);
                 StartCoroutine(OnHit(hit.point, Quaternion.LookRotation(hit.normal), hit.transform));
-                hit.transform.GetComponent<EnemyHealth>()?.TakeDamage(_damage);
+                hit.transform.GetComponentInParent<EnemyHealth>()?.TakeDamage(_damage);
             }
             _input.shoot = false;
         }
