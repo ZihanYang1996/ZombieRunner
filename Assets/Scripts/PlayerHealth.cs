@@ -7,10 +7,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int initHealth = 100;
     
     private int m_CurrentHealth;
+    private GameManager m_GameManager;
     
     public void Awake()
     {
         m_CurrentHealth = initHealth;
+        m_GameManager = FindObjectOfType<GameManager>();
     }
 
     public void TakeDamage(int damage)
@@ -24,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        GameManager.instance.RestartGame();
+        m_GameManager.InvokeGameOverCanvas();
     }
     
     

@@ -96,7 +96,6 @@ public class ChasePlayer : MonoBehaviour
         // Sets the "isAttacking" parameter in the animator to true.
         // This triggers the attack animation in the game object.
         animator.SetBool("isAttacking", true);
-        Debug.Log("Attacking the target");
     }
 
     void ChaseTarget()
