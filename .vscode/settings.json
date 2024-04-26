@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ZombieRunner.sln"
+    "dotnet.defaultSolution": "ZombieRunner.sln",
+    "dotnet.preferCSharpExtension": true
 }
