@@ -11,10 +11,12 @@ public class ChasePlayer : MonoBehaviour
 
     [Tooltip("The square of the distance within which the enemy will chase the player")]
     public float Radius = 10f;
+
     [SerializeField] float chaseTimeAfterLosesTarget = 5f;
     float squareRadius;
     float squareDistance;
     float squareStoppingDistance;
+    [SerializeField] private float turnSpeed = 10f;
 
     bool isProvoked = false;
     Coroutine keepChasingCoroutine;
@@ -79,7 +81,20 @@ public class ChasePlayer : MonoBehaviour
     private void AttackTarget()
     {
         // Make sure enemy always face the player
-        transform.LookAt(player);
+
+        // transform.LookAt(player);  // Also rotate on the x and z axis
+
+        // transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));  // Only rotate on the y-axis
+
+        // More customized way, only rotate on the y-axis
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = lookRotation;
+        // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * m_turnSpeed);  // Smooth rotation, not necessary
+
+
+        // Sets the "isAttacking" parameter in the animator to true.
+        // This triggers the attack animation in the game object.
         animator.SetBool("isAttacking", true);
         Debug.Log("Attacking the target");
     }
@@ -94,8 +109,9 @@ public class ChasePlayer : MonoBehaviour
             {
                 Debug.Log("Restart chasing");
                 StopCoroutine(keepChasingCoroutine);
-                keepChasingCoroutine = null;  // Reset the coroutine to null
+                keepChasingCoroutine = null; // Reset the coroutine to null
             }
+
             agent.isStopped = false;
             agent.SetDestination(player.position);
         }
@@ -109,6 +125,7 @@ public class ChasePlayer : MonoBehaviour
             }
         }
     }
+
     // Keep moving towards the last known position of the player
     IEnumerator KeepChasing(Vector3 lastKnownPosition, float chaseTimeAfterLosesTarget)
     {
@@ -129,8 +146,8 @@ public class ChasePlayer : MonoBehaviour
             timeElapsed += Time.deltaTime;
             // Can be used to add some behavior while chasing
             yield return new WaitForEndOfFrame();
-
         }
+
         Debug.Log("Stopped chasing");
         Debug.Log("No longer provoked");
         agent.isStopped = true;
@@ -145,7 +162,6 @@ public class ChasePlayer : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, Radius);
     }
