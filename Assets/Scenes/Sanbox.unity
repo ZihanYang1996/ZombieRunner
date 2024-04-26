@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2310388261262492859, guid: 78a04f97c2fa89c45ae6907c4917892d, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8997996947815459863}
     - target: {fileID: 2730433823088107147, guid: 78a04f97c2fa89c45ae6907c4917892d, type: 3}
       propertyPath: player
       value: 
@@ -226,10 +230,6 @@ PrefabInstance:
     - target: {fileID: 8846383110214063469, guid: 78a04f97c2fa89c45ae6907c4917892d, type: 3}
       propertyPath: m_Name
       value: Enemy Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 8846383110214063469, guid: 78a04f97c2fa89c45ae6907c4917892d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -765,6 +765,50 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: bbf4add638bf498408f6bdacf52b94f3, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &1511133451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1511133453}
+  - component: {fileID: 1511133452}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1511133452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511133451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99364633407413f44b25b4ee749adc42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1511133453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511133451}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682183543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,6 +1152,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2368552899767092100, guid: 82a09fbea54b75a4b970f076aed8616f, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8997996947815459863}
     - target: {fileID: 2678125180781238708, guid: 82a09fbea54b75a4b970f076aed8616f, type: 3}
       propertyPath: player
       value: 
@@ -1115,10 +1163,6 @@ PrefabInstance:
     - target: {fileID: 8793917227558326866, guid: 82a09fbea54b75a4b970f076aed8616f, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8793917227558326866, guid: 82a09fbea54b75a4b970f076aed8616f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1409,3 +1453,4 @@ SceneRoots:
   - {fileID: 1874808429}
   - {fileID: 64654392}
   - {fileID: 334011107}
+  - {fileID: 1511133453}

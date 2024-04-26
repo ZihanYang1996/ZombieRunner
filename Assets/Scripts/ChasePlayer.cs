@@ -72,11 +72,16 @@ public class ChasePlayer : MonoBehaviour
         }
         else
         {
-            animator.SetBool("isAttacking", true);
-            Debug.Log("Attacking the target");
-            // Attack the target
-            // AttackTarget();
+            AttackTarget();
         }
+    }
+
+    private void AttackTarget()
+    {
+        // Make sure enemy always face the player
+        transform.LookAt(player);
+        animator.SetBool("isAttacking", true);
+        Debug.Log("Attacking the target");
     }
 
     void ChaseTarget()
