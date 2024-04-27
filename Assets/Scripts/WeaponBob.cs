@@ -9,6 +9,8 @@ public class WeaponBob : MonoBehaviour
     CharacterController characterController;
     FirstPersonController firstPersonController;
     
+    [SerializeField] Vector3 defaultWeaponPosition;
+    
     float weaponBobFactor;
     Vector3 weaponBobLocalPosition;
     public float DefaultBobAmount = 0.05f;
@@ -46,6 +48,6 @@ public class WeaponBob : MonoBehaviour
         weaponBobLocalPosition.x = hBobValue;
         weaponBobLocalPosition.y = Mathf.Abs(vBobValue);
 
-        transform.localPosition = Vector3.Lerp(transform.localPosition, weaponBobLocalPosition, Time.deltaTime * BobSharpness);
+        transform.localPosition = defaultWeaponPosition + weaponBobLocalPosition;
     }
 }
