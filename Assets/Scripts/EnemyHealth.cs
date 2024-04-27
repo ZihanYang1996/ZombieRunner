@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     {
         Debug.Log(transform.name + " takes " + damage + " damage.");
         health -= damage;
+        
+        GameManager.instance.SendEnemyHitMessage(gameObject.name);
 
         if (health <= 0)
         {

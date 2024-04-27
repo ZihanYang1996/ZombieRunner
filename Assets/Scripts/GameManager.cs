@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public event Action<String> EnemyHitEvent;
+
     private GameObject m_GameOverCanvas;
 
     private void Awake()
@@ -55,8 +57,14 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    private void OnDestroy()
+    {
+        Debug.Log("GameManager was destroyed");
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("OnSceneLoaded: " + scene.name);
         // Set the gameOverCanvas to false at the start of the game
         m_GameOverCanvas = GameObject.Find("Game Over Canvas");
         m_GameOverCanvas.SetActive(false);
@@ -74,6 +82,11 @@ public class GameManager : MonoBehaviour
         m_GameOverCanvas.SetActive(true);
         // Cursor.visible = true;  // This is not needed because we are unlocking the cursor
         Cursor.lockState = CursorLockMode.None;
+    }
+    
+    public void SendEnemyHitMessage(String enemyName)
+    {
+        EnemyHitEvent?.Invoke(enemyName);
     }
 
     public void RestartGame()

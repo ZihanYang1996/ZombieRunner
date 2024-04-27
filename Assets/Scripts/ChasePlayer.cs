@@ -19,6 +19,7 @@ public class ChasePlayer : MonoBehaviour
     [SerializeField] private float turnSpeed = 10f;
 
     bool isProvoked = false;
+    private bool m_IsQuitting;
     Coroutine keepChasingCoroutine;
 
 
@@ -49,20 +50,46 @@ public class ChasePlayer : MonoBehaviour
                 isProvoked = true;
             }
         }
-
-
-        // if (squareDistance <= squareRadius)
-        // {
-        //     
-        //     agent.SetDestination(player.position);
-        // }
-        // else
-        // {
-        //     agent.isStopped = true;
-        //     // or agent.SetDestination(transform.position);
-        // }
     }
 
+    private void OnEnable()
+    {
+        // Subscribe to the EnemyHitEvent
+        GameManager.instance.EnemyHitEvent += OnEnemyHit;
+    }
+    
+    private void OnDisable()
+    {
+        if (!m_IsQuitting)  // Check if the application is quitting
+        {
+            // Unsubscribe to the EnemyHitEvent
+            GameManager.instance.EnemyHitEvent -= OnEnemyHit;
+        }
+    }
+    
+    private void OnApplicationQuit()
+    {
+        m_IsQuitting = true;
+    }
+    
+    
+    private void OnEnemyHit(string enemyName)
+    {
+        if (enemyName != gameObject.name)
+        {
+            // Ignore the event if the enemy name is not the same as the current enemy
+            return;
+        }
+        // When the event is triggered (enemy get hit), the enemy is provoked
+        Debug.Log("Enemy hit event received");
+        isProvoked = true;
+        // Stop the keepChasingCoroutine if it is not null, so that the enemy starts chasing the player right away
+        if (keepChasingCoroutine != null)
+        {
+            StopCoroutine(keepChasingCoroutine);
+            keepChasingCoroutine = null;
+        }
+    }
     void EngaeTarget()
     {
         CalculateDistance();
@@ -138,6 +165,7 @@ public class ChasePlayer : MonoBehaviour
 
         // More control over the behavior
         Debug.Log("Target lost, moving to the last known position");
+        agent.isStopped = false;   // Make sure the agent is not stopped
         agent.SetDestination(lastKnownPosition);
         float timeElapsed = 0;
         while (timeElapsed < chaseTimeAfterLosesTarget)
