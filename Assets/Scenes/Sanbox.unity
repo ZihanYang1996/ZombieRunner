@@ -2013,6 +2013,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 662581123044948120, guid: 82e08aed3e454a84b8fd531671754a7c, type: 3}
+      propertyPath: m_AmplitudeGain
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 662581123044948120, guid: 82e08aed3e454a84b8fd531671754a7c, type: 3}
+      propertyPath: m_FrequencyGain
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4812081973984334864, guid: 82e08aed3e454a84b8fd531671754a7c, type: 3}
       propertyPath: m_Follow
       value: 
@@ -2269,6 +2277,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4412513272915346509, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: aimWeaponPosition.y
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412513272915346509, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: aimingAnimationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412513272915346509, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
       propertyPath: defaultWeaponPosition.x
       value: 0.09
       objectReference: {fileID: 0}
@@ -2279,6 +2295,14 @@ PrefabInstance:
     - target: {fileID: 4412513272915346509, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
       propertyPath: defaultWeaponPosition.z
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412513272915346509, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: defaultWeaponRotation.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412513272915346509, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: defaultWeaponRotation.y
+      value: -7.02
       objectReference: {fileID: 0}
     - target: {fileID: 7583002478072849457, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
       propertyPath: m_Layer

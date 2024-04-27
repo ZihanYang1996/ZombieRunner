@@ -12,8 +12,6 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] int _damage = 10;
     [SerializeField] ParticleSystem _muzzleFlash;
-    [SerializeField] Vector3 defaultWeaponPosition;
-    [SerializeField] Vector3 aimWeaponPosition;
     
     float rayCastDistance = Mathf.Infinity;
     IObjectPool<GameObject> pool;
@@ -44,14 +42,6 @@ public class Weapon : MonoBehaviour
                 hit.transform.GetComponentInParent<EnemyHealth>()?.TakeDamage(_damage);
             }
             _input.shoot = false;
-        }
-    }
-
-    void Aim()
-    {
-        if (_input.aim)
-        {
-            
         }
     }
 
