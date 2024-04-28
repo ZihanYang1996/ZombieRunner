@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using StarterAssets;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,7 +16,11 @@ public class WeaponMovement : MonoBehaviour
     [SerializeField] Vector3 aimWeaponPosition;
     [SerializeField] Vector3 aimWeaponRotation;
     [SerializeField] private float aimingAnimationSpeed = 10;
+    [SerializeField] private float aimZoomRatio = 0.75f;
+
+    private CinemachineVirtualCamera vcam;
     
+    float m_DefaultFov;
     Vector3 m_WeaponPosition;
     Vector3 m_WeaponRotation;
     
@@ -35,6 +40,8 @@ public class WeaponMovement : MonoBehaviour
         characterController = GetComponentInParent<CharacterController>();
         firstPersonController = GetComponentInParent<FirstPersonController>();
         _input = GetComponentInParent<StarterAssetsInputs>();
+        vcam = FindObjectOfType<CinemachineVirtualCamera>();
+        m_DefaultFov = vcam.m_Lens.FieldOfView;
         m_WeaponPosition = defaultWeaponPosition;
         m_WeaponRotation = defaultWeaponRotation;
     }
@@ -52,14 +59,17 @@ public class WeaponMovement : MonoBehaviour
     private void UpdateWeaponBob()
     {
         float characterMovementFactor = Mathf.Clamp01(characterController.velocity.sqrMagnitude / (firstPersonController.SprintSpeed * firstPersonController.SprintSpeed));
-
         weaponBobFactor = Mathf.Lerp(weaponBobFactor, characterMovementFactor, Time.deltaTime * BobSharpness);
-        if (_input.aim)
-        {
-            weaponBobFactor = 0;
-        }
+        
         float bobAmount = DefaultBobAmount;
         float frequency = BobFrequency;
+        
+        if (_input.aim)
+        {
+            bobAmount *= 0.1f;
+            frequency *= 0.5f;
+        }
+
         float hBobValue = Mathf.Sin(Time.time * frequency) * bobAmount * weaponBobFactor;
         float vBobValue = ((Mathf.Sin(Time.time * frequency * 2) * 0.5f) + 0.5f) * bobAmount * weaponBobFactor;
 
@@ -71,14 +81,28 @@ public class WeaponMovement : MonoBehaviour
     {
         if (_input.aim)
         {
-            Debug.Log("Aiming" + m_WeaponPosition);
             m_WeaponPosition = Vector3.Lerp(m_WeaponPosition, aimWeaponPosition, Time.deltaTime * aimingAnimationSpeed);
             m_WeaponRotation = Vector3.Slerp(m_WeaponRotation, aimWeaponRotation, Time.deltaTime * aimingAnimationSpeed);
+            
+            // Update the Cinemachine Camera FOV
+            float newFov = Mathf.Lerp(vcam.m_Lens.FieldOfView, m_DefaultFov * aimZoomRatio, Time.deltaTime * aimingAnimationSpeed);
+            SetFov(newFov);
         }
         else
         {
             m_WeaponPosition = Vector3.Lerp(m_WeaponPosition, defaultWeaponPosition, Time.deltaTime * aimingAnimationSpeed);
             m_WeaponRotation = Vector3.Slerp(m_WeaponRotation, defaultWeaponRotation, Time.deltaTime * aimingAnimationSpeed);
+            float newFov = Mathf.Lerp(vcam.m_Lens.FieldOfView, m_DefaultFov, Time.deltaTime * aimingAnimationSpeed);
+            SetFov(newFov);
         }
     }
+
+    void SetFov(float fov)
+    {
+        if (vcam)
+        {
+            vcam.m_Lens.FieldOfView = fov;
+        }
+    }
+    
 }

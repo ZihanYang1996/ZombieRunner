@@ -131,11 +131,16 @@ namespace StarterAssets
 
 		private void CameraRotation()
 		{
-			// if there is an input
+			// if there is an input and time is not stopped
 			if (_input.look.sqrMagnitude >= _threshold  && Time.timeScale > 0.0f)
 			{
 				//Don't multiply mouse input by Time.deltaTime
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+
+				if (_input.aim)
+				{
+					deltaTimeMultiplier *= 0.5f;
+				}
 				
 				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
 				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
@@ -161,6 +166,9 @@ namespace StarterAssets
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+			
+			// If aiming, reduce speed by half
+			if (_input.aim) targetSpeed *= 0.5f;
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
