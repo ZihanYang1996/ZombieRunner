@@ -2148,6 +2148,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 436227153559447221, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 436227153559447221, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 7e114a7a-ed62-4b1d-b583-ac05323f11f7
+      objectReference: {fileID: 0}
+    - target: {fileID: 436227153559447221, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
+      value: 1446e13b-7c8f-4c03-b0ad-4ab61cf530d2
+      objectReference: {fileID: 0}
+    - target: {fileID: 436227153559447221, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: Player/Aim[/Mouse/rightButton]
+      objectReference: {fileID: 0}
+    - target: {fileID: 436227153559447221, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
+      value: Player/FireModeSwitch[/Mouse/scroll/up,/Mouse/scroll/down]
+      objectReference: {fileID: 0}
     - target: {fileID: 598037753817920356, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -2236,6 +2256,18 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 9005220659679271695}
+    - target: {fileID: 1895739521686208733, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: autoFireRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895739521686208733, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: burstCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895739521686208733, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
+      propertyPath: burstFireRate
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2640861360445028610, guid: 5351dbc00f983ce4ca799f1c61ea59f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.09

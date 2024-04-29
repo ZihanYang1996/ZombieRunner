@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FireModeSwitch",
+                    "type": "PassThrough",
+                    "id": "1446e13b-7c8f-4c03-b0ad-4ab61cf530d2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -260,13 +269,46 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "0ba29af1-319f-45df-9f0f-0d3f99064a42",
-                    "path": "",
+                    "name": "1D Axis",
+                    "id": "dfea2805-1458-4b24-95d7-dee32edf411b",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "FireModeSwitch",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "759be8c9-dc60-4d67-ab1d-5aaa36973045",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireModeSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "44c417c2-08c9-4d9f-a4fa-81624651937c",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireModeSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f02b771b-203f-4b0b-8155-c5c698a6556a",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireModeSwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
