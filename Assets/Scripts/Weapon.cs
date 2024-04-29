@@ -29,10 +29,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] float autoFireRate = 0.1f;
     [SerializeField] float burstFireRate = 0.05f;
     [SerializeField] float burstCooldown = 1f;
+    [SerializeField] float fireModeSwitchCooldown = 0.25f;
 
     private FireMode m_CurrentFireMode = FireMode.Auto;
     private float m_FireTimer = 0f;
     private bool isFiring = false;
+    private bool isSwitchingFireMode = false;
 
     void Awake()
     {
@@ -100,7 +102,7 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(1f);
         pool.Release(hitVFX);
     }
-    
+
     IEnumerator ShootBurst()
     {
         isFiring = true;
@@ -116,6 +118,15 @@ public class Weapon : MonoBehaviour
 
     public void OnFireModeSwitch(InputValue value)
     {
+        if (!isSwitchingFireMode)
+        {
+            StartCoroutine(SwitchFireMode(value));
+        }
+    }
+
+    IEnumerator SwitchFireMode(InputValue value)
+    {
+        isSwitchingFireMode = true;
         if (value.Get<float>() > 0)
         {
             SwitchToNextFireMode();
@@ -124,19 +135,22 @@ public class Weapon : MonoBehaviour
         {
             SwitchToPreviousFireMode();
         }
+        yield return new WaitForSeconds(fireModeSwitchCooldown);
+        isSwitchingFireMode = false;
     }
-    
+
     private void SwitchToNextFireMode()
     {
         int nextFireMode = ((int)m_CurrentFireMode + 1) % Enum.GetValues(typeof(FireMode)).Length;
         m_CurrentFireMode = (FireMode)nextFireMode;
         Debug.Log("Switched to " + m_CurrentFireMode.ToString() + " fire mode");
     }
-    
+
     private void SwitchToPreviousFireMode()
     {
         // Add the length of the enum to avoid negative values
-        int previousFireMode = ((int)m_CurrentFireMode - 1 + Enum.GetValues(typeof(FireMode)).Length) % Enum.GetValues(typeof(FireMode)).Length;
+        int previousFireMode = ((int)m_CurrentFireMode - 1 + Enum.GetValues(typeof(FireMode)).Length) %
+                               Enum.GetValues(typeof(FireMode)).Length;
         m_CurrentFireMode = (FireMode)previousFireMode;
         Debug.Log("Switched to " + m_CurrentFireMode.ToString() + " fire mode");
     }
